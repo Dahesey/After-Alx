@@ -76,105 +76,183 @@ nav a:hover {
 
 /* Section 1 (Home Page) */
 #section1 {
-    /* background: url('static/Images/background.jpg') center/cover no-repeat; Add background image */
-    height: 100vh; /* Full viewport height */
+    background: linear-gradient(135deg, #d161ff, #8052ec);
+    min-height: 100vh;
+    padding: 50px 20px;
+    position: relative;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0;
-    position: relative;
 }
 
 #section1::before {
-    content: "";
+    content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
- }
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    top: -150px;
+    left: -150px;
+    backdrop-filter: blur(5px);
+}
 
-/* Home Container (Flex for the two boxes) */
+#section1::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    bottom: -100px;
+    right: -100px;
+    backdrop-filter: blur(5px);
+}
+
+/* Update home container for better layout */
 .home-container {
     display: flex;
     width: 100%;
     height: 100%;
+    gap: 30px;
+    position: relative;
+    z-index: 1;
+    padding: 20px;
 }
 
+/* Update card and message box styles for glassmorphism */
 .card, .message-box {
-    flex: 1; /* Each takes 50% of the width */
+    flex: 1;
     height: 100%;
     display: flex;
-    align-items: flex-end;
-    justify-content: center;
     position: relative;
-    transition: 0.4s ease-out;
-    box-shadow: 0px -20px 10px black;
-   
-    
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    transition: all 0.3s ease;
+    overflow: hidden;
 }
 
+.card:hover, .message-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
 
+/* Update card image container */
+.card {
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+}
 
 .card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
-/* Info inside the card, which is initially hidden */
+.card:hover img {
+    transform: scale(1.05);
+}
+
+/* Update card info styles */
 .card .info {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     color: white;
     padding: 20px;
     text-align: center;
-    opacity: 0; /* Initially invisible */
-    transform: translateY(100%); /* Start offscreen at the bottom */
-    transition: opacity 0.5s, transform 0.5s ease-in-out; /* Smooth transition */
-    z-index: 1; /* Make sure it stays above the image */
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.3s ease;
 }
 
-/* When hovering over the card, the info box should appear */
 .card:hover .info {
-    opacity: 1; /* Make it visible */
-    transform: translateY(0); /* Slide it in */
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.heading{
-    display: flexbox;
-    justify-content: center;
-    align-items: center;
-    align-items: center;
-    position: absolute;
-    top: 20%;
-}
-
-/* Message Box Styles */
+/* Update message box styles */
 .message-box {
-    color: black;
+    color: white;
     text-align: left;
-    padding: 50px;
-    font-size: 1.5rem;
+    padding: 40px;
+    font-size: 1.3rem;
     line-height: 1.8;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    flex-direction: column;
+    justify-content: center;
     position: relative;
-    z-index: 2;
 }
 
-.img .background-image{
+.message-box .heading {
+    margin-bottom: 30px;
+    position: relative;
+    top: 0;
+}
+
+.message-box .heading h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.message-box .text p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 20px;
+}
+
+.message-box p {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Update vertical line style */
+.vertical {
+    border-left: 3px solid rgba(255, 255, 255, 0.3);
+    height: 150px;
     position: absolute;
-    left: 0px; 
-    top: 0px;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    -webkit-filter: blur(5px);
-    filter: blur(5px);
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .home-container {
+        flex-direction: column;
+    }
+
+    .card, .message-box {
+        width: 100%;
+        height: auto;
+        min-height: 300px;
+    }
+
+    .message-box {
+        padding: 30px;
+        font-size: 1.1rem;
+    }
+
+    .message-box .heading h1 {
+        font-size: 2rem;
+    }
+
+    .vertical {
+        display: none;
+    }
 }
 
 #section2 {
@@ -217,7 +295,7 @@ nav a:hover {
 .event-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch; /* Changed from center to stretch */
     width: 100%;
     height: 80%;
     gap: 30px;
@@ -226,12 +304,13 @@ nav a:hover {
     padding: 20px;
 }
 
-/* Update card-event styles for glassmorphism */
+/* Update card-event styles */
 .card-event {
     flex: 1;
-    height: 100%;
+    min-height: 500px; /* Set a fixed minimum height */
+    max-height: 500px; /* Set a fixed maximum height */
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* Changed from center to flex-start */
     justify-content: flex-start;
     text-align: justify;
     background: rgba(255, 255, 255, 0.1);
@@ -244,33 +323,47 @@ nav a:hover {
     flex-direction: column;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     transition: all 0.3s ease;
+    overflow-y: auto; /* Add scrolling for overflow content */
 }
 
-.card-event:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.45);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+/* Add custom scrollbar styles for the cards */
+.card-event::-webkit-scrollbar {
+    width: 6px;
 }
 
-/* Update text styles inside cards */
+.card-event::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.card-event::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.card-event::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Update the content spacing inside cards */
 .card-event h1 {
-    color: #fff;
-    font-size: 1.8rem;
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 10px 0;
     margin-bottom: 20px;
+    width: 100%;
     text-align: center;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
 }
 
 .card-event h2 {
-    color: #fff;
-    font-size: 1.2rem;
-    margin: 10px 0;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    margin: 8px 0;
 }
 
 .card-event p {
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 /* Update page title for better visibility */
