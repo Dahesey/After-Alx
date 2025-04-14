@@ -1,0 +1,327 @@
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 108px; /* Adjust to match navbar height */
+}
+
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header Styles */
+header {
+    height: 100px; /* Increased height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #333;
+    padding-top: 120px;
+   
+}
+
+.header-logo{
+    height: 50px;
+    width: 50px;
+}
+/* Navigation Styles */
+nav {
+    background: #333;
+    padding: 20px 0; /* Increased padding to make space for nav items */
+    z-index: 1000; /* Ensure the nav stays on top */
+    position:fixed;
+    top: 0;
+    width: 100%;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center; /* Center the nav items */
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    text-transform: capitalize;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background-color: rgb(152, 95, 160);
+    text-transform: uppercase;
+}
+
+.vertical {
+    border-left: 6px solid rgb(152, 95, 160);
+    height: 200px;
+    position: absolute;
+    left: 5%;
+  }
+
+/* Section 1 (Home Page) */
+#section1 {
+    /* background: url('static/Images/background.jpg') center/cover no-repeat; Add background image */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    position: relative;
+}
+
+#section1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+ }
+
+/* Home Container (Flex for the two boxes) */
+.home-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.card, .message-box {
+    flex: 1; /* Each takes 50% of the width */
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    transition: 0.4s ease-out;
+    box-shadow: 0px 7px 10px black;
+    
+}
+
+
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Info inside the card, which is initially hidden */
+.card .info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    opacity: 0; /* Initially invisible */
+    transform: translateY(100%); /* Start offscreen at the bottom */
+    transition: opacity 0.5s, transform 0.5s ease-in-out; /* Smooth transition */
+    z-index: 1; /* Make sure it stays above the image */
+}
+
+/* When hovering over the card, the info box should appear */
+.card:hover .info {
+    opacity: 1; /* Make it visible */
+    transform: translateY(0); /* Slide it in */
+}
+
+.heading{
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+    position: absolute;
+    top: 20%;
+}
+
+/* Message Box Styles */
+.message-box {
+    color: black;
+    text-align: left;
+    padding: 50px;
+    font-size: 1.5rem;
+    line-height: 1.8;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    z-index: 2;
+}
+
+.img .background-image{
+    position: absolute;
+    left: 0px; 
+    top: 0px;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+}
+
+#section2 {
+    background-image: url(/PFC-FrontDesk/static/Images/pfc-fd9.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    position: relative;
+}
+
+#section2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+ }
+
+/* Events Container (Flex for the Three boxes) */
+.event-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+    gap: 20px; /* Adds spacing between cards */
+}
+
+/* Card-event container */
+.card-event {
+    flex: 1; /* Ensures equal width distribution */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: justify;
+    background: rgb(168, 77, 195);
+    color: white; /* Optional for better visibility */
+    backdrop-filter: blur(5px);
+    border-top: 1px solid grey;
+    border-left: 1px solid grey;
+    padding: 30px 50px;
+    border-radius: 50px;
+    flex-direction: column;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    
+    
+
+
+}
+.card-event img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Info inside the card, which is initially hidden */
+.card .info-weekly {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    opacity: 0; /* Initially invisible */
+    transform: translateY(100%); /* Start offscreen at the bottom */
+    transition: opacity 0.5s, transform 0.5s ease-in-out; /* Smooth transition */
+    z-index: 1; /* Make sure it stays above the image */
+}
+
+/* When hovering over the card, the info box should appear */
+.card-event:hover .info-weekly {
+    opacity: 1; /* Make it visible */
+    transform: translateY(0); /* Slide it in */
+}
+
+
+#section3 {
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    position: relative;
+    background: #f8f8f8;
+}
+
+/* Fade-in animation for the message box */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .home-container {
+        flex-direction: column;
+    }
+
+    .card, .message-box {
+        flex: none;
+        width: 100%;
+        height: 50%;
+    }
+
+    .message-box {
+        font-size: 1.5rem;
+        padding: 30px;
+    }
+}
+
+.page-title {
+    display: block; /* No need for flexbox */
+    text-align: center; /* Ensures text is centered */
+    width: 100%; /* Makes sure it spans full width */
+    position: absolute; /* Positions it at the top */
+    top: 20px; /* Adjust the top spacing as needed */
+    left: 50%; /* Centers horizontally */
+    transform: translateX(-50%); /* Ensures perfect center alignment */
+    z-index: 2; /* Keeps it above other elements */
+}
+
+.page-title h1 {
+    font-size: 2rem; /* Adjust title size */
+    margin: 0; /* Remove unwanted margin */
+    padding: 10px 0; /* Add minimal spacing */
+}
+
+/* Footer Styles */
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    color: white;
+    margin-top: auto;
+}
