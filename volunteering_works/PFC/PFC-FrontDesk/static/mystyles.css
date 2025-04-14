@@ -109,7 +109,8 @@ nav a:hover {
     justify-content: center;
     position: relative;
     transition: 0.4s ease-out;
-    box-shadow: 0px 7px 10px black;
+    box-shadow: 0px -20px 10px black;
+   
     
 }
 
@@ -177,85 +178,107 @@ nav a:hover {
 }
 
 #section2 {
-    background-image: url(/PFC-FrontDesk/static/Images/pfc-fd9.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 100vh; /* Full viewport height */
+    background: linear-gradient(135deg, #8052ec, #d161ff);
+    min-height: 100vh;
+    padding: 50px 20px;
+    position: relative;
+    overflow: hidden;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0;
-    position: relative;
 }
 
 #section2::before {
-    content: "";
+    content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
- }
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    top: -100px;
+    right: -100px;
+    backdrop-filter: blur(5px);
+}
 
-/* Events Container (Flex for the Three boxes) */
+#section2::after {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    bottom: -75px;
+    left: -75px;
+    backdrop-filter: blur(5px);
+}
+
+/* Update event container styles */
 .event-container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 80%;
-    gap: 20px; /* Adds spacing between cards */
+    gap: 30px;
+    position: relative;
+    z-index: 1;
+    padding: 20px;
 }
 
-/* Card-event container */
+/* Update card-event styles for glassmorphism */
 .card-event {
-    flex: 1; /* Ensures equal width distribution */
+    flex: 1;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     text-align: justify;
-    background: rgb(168, 77, 195);
-    color: white; /* Optional for better visibility */
-    backdrop-filter: blur(5px);
-    border-top: 1px solid grey;
-    border-left: 1px solid grey;
-    padding: 30px 50px;
-    border-radius: 50px;
-    flex-direction: column;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-    
-    
-
-
-}
-.card-event img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Info inside the card, which is initially hidden */
-.card .info-weekly {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(255, 255, 255, 0.1);
     color: white;
-    padding: 20px;
-    text-align: center;
-    opacity: 0; /* Initially invisible */
-    transform: translateY(100%); /* Start offscreen at the bottom */
-    transition: opacity 0.5s, transform 0.5s ease-in-out; /* Smooth transition */
-    z-index: 1; /* Make sure it stays above the image */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 30px;
+    border-radius: 20px;
+    flex-direction: column;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    transition: all 0.3s ease;
 }
 
-/* When hovering over the card, the info box should appear */
-.card-event:hover .info-weekly {
-    opacity: 1; /* Make it visible */
-    transform: translateY(0); /* Slide it in */
+.card-event:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Update text styles inside cards */
+.card-event h1 {
+    color: #fff;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.card-event h2 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin: 10px 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.card-event p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 15px;
+}
+
+/* Update page title for better visibility */
+.page-title h1 {
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 40px;
 }
 
 
